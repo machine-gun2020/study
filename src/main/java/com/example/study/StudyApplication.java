@@ -14,7 +14,7 @@ public class StudyApplication {
 
 		SpringApplication.run(StudyApplication.class, args);
 
-		List<Integer> list = Arrays.asList(2,52,3,76,9,4);
+		List<Integer> list = Arrays.asList(8,52,3,76,9,4);
 		Integer max = list
 				.stream()
 				.mapToInt(x -> x)
