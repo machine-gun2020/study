@@ -22,6 +22,11 @@ public class StudyApplication {
 				.getAsInt();
 			System.out.println(max);
 
+			list
+					.stream()
+					.findAny()
+					.ifPresent(System.out::println);
+
 	}
 
 }
