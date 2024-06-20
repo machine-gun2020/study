@@ -31,9 +31,15 @@ public class StudyApplication {
 					.stream()
 					.max(Comparator.naturalOrder())
 					.ifPresent(System.out::println);
+
 			secondList
 					.stream()
 					.map(str->str.toUpperCase())
+					.forEach(System.out::println);
+
+			list
+					.stream()
+					.filter(x -> x%2 == 0)
 					.forEach(System.out::println);
 
 	}
