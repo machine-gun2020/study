@@ -1,6 +1,5 @@
 package com.example.study;
 
-import ch.qos.logback.core.net.SyslogOutputStream;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -14,7 +13,7 @@ public class StudyApplication {
 	public static void main(String[] args) {
 
 		SpringApplication.run(StudyApplication.class, args);
-
+		List<String> secondList = Arrays.asList("Adrian","Marco", "Elsa");
 		List<Integer> list = Arrays.asList(8,52,3,76,9,4);
 		Integer max = list
 				.stream()
@@ -31,7 +30,12 @@ public class StudyApplication {
 			list
 					.stream()
 					.max(Comparator.naturalOrder())
-					.ifPresent(System.out::print);
+					.ifPresent(System.out::println);
+			secondList
+					.stream()
+					.map(str->str.toUpperCase())
+					.forEach(System.out::println);
+
 	}
 
 }
