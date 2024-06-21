@@ -14,7 +14,7 @@ public class StudyApplication {
 
 		SpringApplication.run(StudyApplication.class, args);
 		List<String> secondList = Arrays.asList("Adrian","Marco", "Elsa");
-		List<Integer> list = Arrays.asList(8,52,3,76,9,4);
+		List<Integer> list = Arrays.asList(8,52,3,76,9,4,1,5,7,9);
 		Integer max = list
 				.stream()
 				.mapToInt(x -> x)
@@ -40,6 +40,11 @@ public class StudyApplication {
 			list
 					.stream()
 					.filter(x -> x%2 == 0)
+					.forEach(System.out::println);
+
+			list
+					.stream()
+					.sorted(Comparator.reverseOrder())
 					.forEach(System.out::println);
 
 	}
