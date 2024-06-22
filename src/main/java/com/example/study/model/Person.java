@@ -1,32 +1,43 @@
 package com.example.study.model;
 
 public class Person {
-    public String name;
-    public int age;
-    public char sex;
+    private String name;
+    private int age;
+    private char gender;
 
-    public Person(String charly, int i, char m) {
+    public Person(String name, int age, char gender) {
+        this.name = name;
+        this.age = age;
+        this.gender = gender;
     }
 
+    // Getters and setters
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getAge() {
         return age;
     }
 
-    public char getSex() {
-        return sex;
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public char getGender() {
+        return gender;
+    }
+
+    public void setGender(char gender) {
+        this.gender = gender;
     }
 
     @Override
     public String toString() {
-        return "Person{" +
-                "name='" + name + '\'' +
-                ", age=" + age +
-                ", sex=" + sex +
-                '}';
+        return "Person{name='" + name + "', age=" + age + ", gender=" + gender + '}';
     }
-
 }
