@@ -1,5 +1,6 @@
 package com.example.study;
 
+import com.example.study.model.Person;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -14,7 +15,7 @@ public class StudyApplication {
 
 		SpringApplication.run(StudyApplication.class, args);
 		List<String> secondList = Arrays.asList("Adrian","Marco", "Elsa");
-		List<Integer> list = Arrays.asList(8,52,3,76,9,4,1,5,7,9);
+		List<Integer> list = Arrays.asList(8,52,3,76,9,4,1,5,7,9,2);
 		Integer max = list
 				.stream()
 				.mapToInt(x -> x)
@@ -47,6 +48,17 @@ public class StudyApplication {
 					.sorted(Comparator.reverseOrder())
 					.forEach(System.out::println);
 
+			List<Person> people = Arrays.asList(
+					new Person("Charly", 32, 'M'),
+					new Person("George", 54, 'M'),
+					new Person("Jenny", 25, 'F')
+			);
+
+			people
+					.stream()
+					.map (p -> p.getAge())
+					.max(Comparator.naturalOrder())
+					.ifPresent(System.out::println);
 	}
 
 }
