@@ -11,4 +11,9 @@ public class PaymentType implements payment{
     public void obtaintPayment() {
         System.out.println("Obtaint Payment");
     }
+
+    @Override
+    public String returnMayment() {
+        return "Saul";
+    }
 }

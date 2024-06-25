@@ -4,10 +4,7 @@ import com.example.study.model.Person;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 @SpringBootApplication
 public class StudyApplication {
@@ -69,7 +66,13 @@ public class StudyApplication {
 		PaymentType paymentType = new PaymentType();
 		paymentType.type();
 		paymentType.obtaintPayment();
+		String Name = paymentType.returnMayment();
 
+		Optional<String> name1 = Optional.ofNullable(paymentType.returnMayment());
+		name1.ifPresentOrElse(
+				name -> System.out.println("Person2's name is: " + name),
+				() -> System.out.println("Person2 has no name")
+		);
 
 		EjemploExtendsAbstract ejemploExtendsAbstract = new EjemploExtendsAbstract();
 		ejemploExtendsAbstract.salidaEjemplo();

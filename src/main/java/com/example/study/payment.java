@@ -5,8 +5,9 @@ import java.util.Optional;
 public interface payment {
     void type();
     void obtaintPayment();
+    String returnMayment();
 
-    int cuenta = 0;
+
     default int salidasasd(int cuenta){
         return cuenta;
     }
