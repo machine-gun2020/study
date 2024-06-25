@@ -10,7 +10,7 @@ import java.util.*;
 public class StudyApplication {
 
 	public static void main(String[] args) {
-		int li = 0;
+
 		SpringApplication.run(StudyApplication.class, args);
 		List<String> secondList = Arrays.asList("Adrian","Marco", "Elsa");
 		List<Integer> list = Arrays.asList(8,52,3,76,9,4,1,5,7,9,2);
@@ -66,7 +66,7 @@ public class StudyApplication {
 		PaymentType paymentType = new PaymentType();
 		paymentType.type();
 		paymentType.obtaintPayment();
-		String Name = paymentType.returnMayment();
+
 
 
 		Optional<String> name1 = Optional.ofNullable(paymentType.returnMayment());
