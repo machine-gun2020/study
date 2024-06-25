@@ -65,6 +65,15 @@ public class StudyApplication {
 					.stream()
 					.filter(x -> Objects.equals(x.getName(), "George"))
 					.forEach(System.out::println);
+
+		PaymentType paymentType = new PaymentType();
+		paymentType.type();
+		paymentType.obtaintPayment();
+
+		EjemploExtendsAbstract ejemploExtendsAbstract = new EjemploExtendsAbstract();
+		ejemploExtendsAbstract.salidaEjemplo();
+		System.out.println(ejemploExtendsAbstract.cuenta(2));
+		System.out.println(paymentType.salidasasd(2));
 	}
 
 }
