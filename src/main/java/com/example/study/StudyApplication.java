@@ -36,7 +36,7 @@ public class StudyApplication {
 
 			secondList
 					.stream()
-					.map(str->str.toUpperCase())
+					.map(String::toUpperCase)
 					.forEach(System.out::println);
 
 			list
@@ -57,7 +57,7 @@ public class StudyApplication {
 
 			people
 					.stream()
-					.map (p -> p.getAge())
+					.map (Person::getAge)
 					.max(Comparator.naturalOrder())
 					.ifPresent(System.out::println);
 
