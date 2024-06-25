@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
 
 @SpringBootApplication
 public class StudyApplication {
@@ -59,6 +60,21 @@ public class StudyApplication {
 					.map (p -> p.getAge())
 					.max(Comparator.naturalOrder())
 					.ifPresent(System.out::println);
+
+			people
+					.stream()
+					.filter(x -> Objects.equals(x.getName(), "George"))
+					.forEach(System.out::println);
+
+		PaymentType paymentType = new PaymentType();
+		paymentType.type();
+		paymentType.obtaintPayment();
+
+		EjemploExtendsAbstract ejemploExtendsAbstract = new EjemploExtendsAbstract();
+		ejemploExtendsAbstract.salidaEjemplo();
+		System.out.println(ejemploExtendsAbstract.cuenta(2));
+		System.out.println(paymentType.salidasasd(2));
+
 	}
 
 }
