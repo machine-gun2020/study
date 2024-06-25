@@ -68,11 +68,14 @@ public class StudyApplication {
 		paymentType.obtaintPayment();
 		String Name = paymentType.returnMayment();
 
+
 		Optional<String> name1 = Optional.ofNullable(paymentType.returnMayment());
 		name1.ifPresentOrElse(
 				name -> System.out.println("Person2's name is: " + name),
 				() -> System.out.println("Person2 has no name")
 		);
+
+
 
 		EjemploExtendsAbstract ejemploExtendsAbstract = new EjemploExtendsAbstract();
 		ejemploExtendsAbstract.salidaEjemplo();
