@@ -48,7 +48,7 @@ public class StudyApplication {
 
 			List<Person> people = Arrays.asList(
 					new Person("Charly", 32, 'M'),
-					new Person("George", 54, 'M'),
+					new Person("George", 55, 'M'),
 					new Person("Jenny", 25, 'F')
 			);
 
@@ -82,6 +82,19 @@ public class StudyApplication {
 		System.out.println(ejemploExtendsAbstract.cuenta(2));
 		System.out.println(paymentType.salidasasd(2));
 
+
+		Optional<Integer> myNumber = Optional.of(ejemploExtendsAbstract.cuenta(2));
+		myNumber.ifPresentOrElse(
+				number -> System.out.println("the number winner is: " + myNumber),
+				() -> System.out.println("myNumber has no value")
+		);
+
+		HiloEjemplo hiloEjemplo = new HiloEjemplo();
+		hiloEjemplo.start();
+
+		EjemploEjecutable ejemploEjecutable = new EjemploEjecutable();
+		Thread thread = new Thread(ejemploEjecutable);
+		thread.start();
 	}
 
 }
