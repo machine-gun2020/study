@@ -5,6 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.*;
+import java.util.function.*;
 
 @SpringBootApplication
 public class StudyApplication {
@@ -111,19 +112,42 @@ public class StudyApplication {
 		Map<String, Integer> unmodifiableMap = Collections.unmodifiableMap(map);
 		System.out.println("Map: " + unmodifiableMap);
 
-	}
-
-	private static Map<Integer, Integer> getIntegerIntegerMap() {
 		HiloEjemplo hiloEjemplo = new HiloEjemplo();
-		hiloEjemplo.start();
+
 
 		EjemploEjecutable ejemploEjecutable = new EjemploEjecutable();
 		Thread thread = new Thread(ejemploEjecutable);
+		hiloEjemplo.start();
 		thread.start();
 
+		// Predicate<T>
+		Predicate<Integer> isEven = n -> n % 2 == 0;
+		System.out.println("Is 4 even? " + isEven.test(4));
+		System.out.println("Is 7 even? " + isEven.test(7));
 
+		// Function<T, R>
+		Function<String, Integer> stringLength = s -> s.length();
+		System.out.println("Length of 'hello': " + stringLength.apply("hello"));
+
+		// Consumer<T>
+		Consumer<String> print = s -> System.out.println(s);
+		print.accept("Hello, World!");
+
+		// Supplier<T>
+		Supplier<String> stringSupplier = () -> "Supplied String";
+		System.out.println(stringSupplier.get());
+
+		// UnaryOperator<T>
+		UnaryOperator<Integer> square = n -> n * n;
+		System.out.println("Square of 5: " + square.apply(5));
+
+		// BinaryOperator<T>
+		BinaryOperator<Integer> sum = (a, b) -> a + b;
+		System.out.println("Sum of 3 and 5: " + sum.apply(3, 5));
+	}
+
+	private static Map<Integer, Integer> getIntegerIntegerMap() {
 		int[] numbers = {1, 3, 4, 5, 2, 7, 6, 5, 4, 3, 2};
-
 		Map<Integer, Integer> frequencyMap = new HashMap<>();
 
 		for (int number : numbers) {
