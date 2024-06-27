@@ -89,6 +89,31 @@ public class StudyApplication {
 				() -> System.out.println("myNumber has no value")
 		);
 
+		Map<Integer, Integer> frequencyMap = getIntegerIntegerMap();
+
+		for (Map.Entry<Integer, Integer> entry : frequencyMap.entrySet()) {
+			System.out.println("Number " + entry.getKey() + " appears " + entry.getValue() + " times.");
+		}
+
+		List<String> list2 = Arrays.asList("a", "b", "c");
+		System.out.println("List: " + list2);
+
+		// Set.of() equivalent
+		Set<String> set = new HashSet<>(Arrays.asList("a", "b", "c"));
+		System.out.println("Set: " + set);
+
+		// Map.of() equivalent
+		Map<String, Integer> map = new HashMap<>();
+		map.put("a", 1);
+		map.put("b", 2);
+		map.put("c", 3);
+		map.put("a", 4);
+		Map<String, Integer> unmodifiableMap = Collections.unmodifiableMap(map);
+		System.out.println("Map: " + unmodifiableMap);
+
+	}
+
+	private static Map<Integer, Integer> getIntegerIntegerMap() {
 		HiloEjemplo hiloEjemplo = new HiloEjemplo();
 		hiloEjemplo.start();
 
@@ -108,10 +133,7 @@ public class StudyApplication {
 				frequencyMap.put(number, 1);
 			}
 		}
-
-		for (Map.Entry<Integer, Integer> entry : frequencyMap.entrySet()) {
-			System.out.println("Number " + entry.getKey() + " appears " + entry.getValue() + " times.");
-		}
+		return frequencyMap;
 	}
 
 
