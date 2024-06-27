@@ -95,6 +95,24 @@ public class StudyApplication {
 		EjemploEjecutable ejemploEjecutable = new EjemploEjecutable();
 		Thread thread = new Thread(ejemploEjecutable);
 		thread.start();
+
+
+		int[] numbers = {1, 3, 4, 5, 2, 7, 6, 5, 4, 3, 2};
+
+		Map<Integer, Integer> frequencyMap = new HashMap<>();
+
+		for (int number : numbers) {
+			if (frequencyMap.containsKey(number)) {
+				frequencyMap.put(number, frequencyMap.get(number) + 1);
+			} else {
+				frequencyMap.put(number, 1);
+			}
+		}
+
+		for (Map.Entry<Integer, Integer> entry : frequencyMap.entrySet()) {
+			System.out.println("Number " + entry.getKey() + " appears " + entry.getValue() + " times.");
+		}
 	}
+
 
 }
