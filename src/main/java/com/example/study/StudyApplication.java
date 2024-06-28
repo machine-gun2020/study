@@ -86,11 +86,20 @@ public class StudyApplication {
 
 		Optional<Integer> myNumber = Optional.of(ejemploExtendsAbstract.cuenta(2));
 		myNumber.ifPresentOrElse(
-				number -> System.out.println("the number winner is: " + myNumber),
+				number -> System.out.println("the winner number is: " + myNumber),
 				() -> System.out.println("myNumber has no value")
 		);
 
-		Map<Integer, Integer> frequencyMap = getIntegerIntegerMap();
+		 int[] numbers = {1, 3, 4, 5, 2, 7, 6, 5, 4, 3, 2};
+		Map<Integer, Integer> frequencyMap = new HashMap<>();
+
+		for (int number : numbers) {
+			if (frequencyMap.containsKey(number)) {
+				frequencyMap.put(number, frequencyMap.get(number) + 1);
+			} else {
+				frequencyMap.put(number, 1);
+			}
+		}
 
 		for (Map.Entry<Integer, Integer> entry : frequencyMap.entrySet()) {
 			System.out.println("Number " + entry.getKey() + " appears " + entry.getValue() + " times.");
@@ -100,7 +109,7 @@ public class StudyApplication {
 		System.out.println("List: " + list2);
 
 		// Set.of() equivalent
-		Set<String> set = new HashSet<>(Arrays.asList("a", "b", "c"));
+		Set<String> set = new HashSet<>(Arrays.asList("a", "b", "c","b"));
 		System.out.println("Set: " + set);
 
 		// Map.of() equivalent
@@ -144,21 +153,9 @@ public class StudyApplication {
 		// BinaryOperator<T>
 		BinaryOperator<Integer> sum = (a, b) -> a + b;
 		System.out.println("Sum of 3 and 5: " + sum.apply(3, 5));
+
 	}
 
-	private static Map<Integer, Integer> getIntegerIntegerMap() {
-		int[] numbers = {1, 3, 4, 5, 2, 7, 6, 5, 4, 3, 2};
-		Map<Integer, Integer> frequencyMap = new HashMap<>();
-
-		for (int number : numbers) {
-			if (frequencyMap.containsKey(number)) {
-				frequencyMap.put(number, frequencyMap.get(number) + 1);
-			} else {
-				frequencyMap.put(number, 1);
-			}
-		}
-		return frequencyMap;
-	}
 
 
 }
