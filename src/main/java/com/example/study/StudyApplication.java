@@ -90,7 +90,7 @@ public class StudyApplication {
 				() -> System.out.println("myNumber has no value")
 		);
 
-		 int[] numbers = {1, 3, 4, 5, 2, 7, 6, 5, 4, 3, 2};
+		int[] numbers = {1, 3, 4, 5, 2, 7, 6, 5, 4, 3, 2};
 		Map<Integer, Integer> frequencyMap = new HashMap<>();
 
 		for (int number : numbers) {
@@ -154,8 +154,16 @@ public class StudyApplication {
 		BinaryOperator<Integer> sum = (a, b) -> a + b;
 		System.out.println("Sum of 3 and 5: " + sum.apply(3, 5));
 
+		Map<Integer, Integer> frecuency = new HashMap<>();
+		for(int num : numbers) {
+			if(frecuency.containsKey(num)) {
+				frecuency.put(num, frecuency.get(num) + 1);
+			} else {
+				frecuency.put(num, 1);
+			}
+		}
+		for(Map.Entry<Integer, Integer> ent : frecuency.entrySet()){
+			System.out.println("Numero " + ent.getKey() + " appears " + ent.getValue() + " times ");
+		}
 	}
-
-
-
 }
