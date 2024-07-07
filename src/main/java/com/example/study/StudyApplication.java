@@ -163,6 +163,7 @@ public class StudyApplication {
 			}
 		}
 		for(Map.Entry<Integer, Integer> ent : frecuency.entrySet()){
+			//System.out.println( ent.getKey() + ", " + ent.getValue() + " times");
 			System.out.println("Numero " + ent.getKey() + " appears " + ent.getValue() + " times ");
 		}
 	}
