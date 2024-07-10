@@ -1,9 +1,19 @@
 package com.example.study;
+import com.example.study.controller.WordController;
 import com.example.study.model.Person;
+import com.example.study.service.ExampleService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.mockito.InjectMocks;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.web.servlet.MockMvc;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -15,6 +25,13 @@ class StudyApplicationTest {
 	private List<String> secondList;
 	private List<Integer> list;
 	private List<Person> people;
+
+	@BeforeEach
+	public void setup() {
+
+	}
+
+
 
 	@BeforeEach
 	void setUp() {

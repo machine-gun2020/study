@@ -166,5 +166,21 @@ public class StudyApplication {
 			//System.out.println( ent.getKey() + ", " + ent.getValue() + " times");
 			System.out.println("Numerous " + ent.getKey() + " appears " + ent.getValue() + " times ");
 		}
+
+		int[] historicalNumbers = {5, 12, 23, 34, 45, 56, 5, 12, 34, 23, 45, 56, 5, 12, 34};
+		Map<Integer, Integer> frequencyMapX = new HashMap<>();
+
+		for (int num : historicalNumbers) {
+			frequencyMapX.put(num, frequencyMapX.getOrDefault(num, 0) + 1);
+		}
+
+		List<Integer> frequentNumbers = new ArrayList<>();
+		for (Map.Entry<Integer, Integer> entry : frequencyMapX.entrySet()) {
+			if (entry.getValue() >= 2) {
+				frequentNumbers.add(entry.getKey());
+			}
+		}
+
+		System.out.println("Frequent Numbers: " + frequentNumbers);
 	}
 }
