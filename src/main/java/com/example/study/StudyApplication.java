@@ -1,11 +1,13 @@
 package com.example.study;
 
-import com.example.study.model.Concurso;
 import com.example.study.model.Person;
+import com.example.study.model.Sorteo;
+import com.example.study.repository.SorteoRepository;
+import com.example.study.service.SorteoService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
 
-import java.time.LocalDate;
 import java.util.*;
 import java.util.function.*;
 
@@ -14,7 +16,7 @@ public class StudyApplication {
 
 	public static void main(String[] args) {
 
-		SpringApplication.run(StudyApplication.class, args);
+		ApplicationContext context = SpringApplication.run(StudyApplication.class, args);
 		List<String> secondList = Arrays.asList("Adrian","Marco", "Elsa");
 		List<Integer> list = Arrays.asList(8,52,3,76,9,4,1,5,7,9,2);
 		Integer max = list
@@ -183,5 +185,13 @@ public class StudyApplication {
 			}
 		}
 		System.out.println("Frequent Numbers: " + frequentNumbers);
+
+		SorteoRepository sorteoRepository = context.getBean(SorteoRepository.class);
+
+		// Llama al método findAll() para obtener todos los registros y llenar el List<Sorteo>
+		List<Sorteo> sorteos = sorteoRepository.findAll();
+
+		// Imprime los registros obtenidos
+		sorteos.forEach(System.out::println);
 	}
 }

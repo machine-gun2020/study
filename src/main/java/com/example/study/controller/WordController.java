@@ -15,6 +15,9 @@ import static com.example.study.service.ExampleService.executeMethod;
 @RestController
 public class WordController {
 
+    
+
+
     @Autowired
     ExampleService exampleService;
     @GetMapping("/receiveWord")
