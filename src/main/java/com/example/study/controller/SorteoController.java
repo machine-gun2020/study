@@ -1,5 +1,7 @@
 package com.example.study.controller;
 
+import com.example.study.CombinatorialCondensationExample;
+import com.example.study.dto.SorteoDtoN1;
 import com.example.study.model.Sorteo;
 import com.example.study.service.SorteoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +24,19 @@ public class SorteoController {
 
     @GetMapping
     public List<Sorteo> getAllSorteos() {
+
         return sorteoService.getAllSorteos();
+
+    }
+    @GetMapping("/n1")
+    public List<SorteoDtoN1> getN1() {
+        return sorteoService.getN1();
+    }
+
+    @GetMapping("/predict")
+    public int[] predictNextResult() {
+        List<Sorteo> sorteos = sorteoService.getAllSorteos();
+        return CombinatorialCondensationExample.predictNextResult(sorteos);
     }
 }
 

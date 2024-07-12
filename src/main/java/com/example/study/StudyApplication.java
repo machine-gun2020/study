@@ -1,5 +1,6 @@
 package com.example.study;
 
+import com.example.study.dto.SorteoDtoN1;
 import com.example.study.model.Person;
 import com.example.study.model.Sorteo;
 import com.example.study.repository.SorteoRepository;
@@ -190,8 +191,29 @@ public class StudyApplication {
 
 		// Llama al método findAll() para obtener todos los registros y llenar el List<Sorteo>
 		List<Sorteo> sorteos = sorteoRepository.findAll();
-
-		// Imprime los registros obtenidos
 		sorteos.forEach(System.out::println);
+
+		/*
+		List<List<Sorteo>> so = Arrays.asList(sorteos);
+		// Imprime los registros obtenidos
+		so.stream().sorted().forEach(System.out::println);
+		*/
+
+		List< SorteoDtoN1> primerC =  sorteoRepository.findN1();
+		//primerC.forEach(System.out::println);
+
+		Map<Integer, Integer> frecuencyN1 = new HashMap<>();
+		for (SorteoDtoN1 sorteoDtoN1 : primerC) {
+			if(frecuencyN1.containsKey(Integer.parseInt(String.valueOf(sorteoDtoN1)))) {
+				frecuencyN1.put(sorteoDtoN1.getN1(), frecuencyN1.get(Integer.parseInt(String.valueOf(sorteoDtoN1))) + 1);
+			} else {
+				frecuencyN1.put(Integer.parseInt(String.valueOf(sorteoDtoN1)), 1);
+			}
+		}
+
+		for(Map.Entry<Integer, Integer> ent2 : frecuencyN1.entrySet()){
+			System.out.println("Numerous " + ent2.getKey() + " appears " + ent2.getValue() + " times ");
+		}
+
 	}
 }
