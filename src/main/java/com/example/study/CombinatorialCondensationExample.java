@@ -2,6 +2,7 @@ package com.example.study;
 
 import com.example.study.model.Sorteo;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class CombinatorialCondensationExample {
@@ -36,7 +37,7 @@ public class CombinatorialCondensationExample {
             }
             result[i] = sum / sorteos.size();
         }
-
+        System.out.println(Arrays.toString(result));
         return result;
     }
 }

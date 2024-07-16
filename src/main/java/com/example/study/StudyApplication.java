@@ -5,12 +5,15 @@ import com.example.study.model.Person;
 import com.example.study.model.Sorteo;
 import com.example.study.repository.SorteoRepository;
 import com.example.study.service.SorteoService;
+import com.example.study.controller.SorteoController;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
 import java.util.*;
 import java.util.function.*;
+
+import static com.example.study.CombinatorialCondensationExample.predictNextResult;
 
 @SpringBootApplication
 public class StudyApplication {

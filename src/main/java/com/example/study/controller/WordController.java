@@ -24,6 +24,8 @@ public class WordController {
     public String receiveWord(@RequestParam String word) {
         return "Received word: " + word;
     }
+
+
     @GetMapping("/execute")
     public ResponseEntity<String> execute(@RequestParam(required = false) String idioma,
                                           @RequestParam(required = false) String word) {

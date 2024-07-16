@@ -7,6 +7,8 @@ insert into countries (id, name) values (6,'PANAMA');
 insert into countries (id, name) values (7,'EL SALVADOR');
 insert into countries (id, name) values (8,'USA');
 
+insert into sorteos (id, n1,n2, n3,n4,n5,n6,comodin, fecha, monto) values (3925 ,  10,18,31,44,45,49,33, '2024-07-12',48900000);
+insert into sorteos (id, n1,n2, n3,n4,n5,n6,comodin, fecha, monto) values (3924 ,  3,4,5,10,39,52,53, '2024-07-10',48900000);
 insert into sorteos (id, n1,n2, n3,n4,n5,n6,comodin, fecha, monto) values (3923 ,  6,12,14,28,38,53,56, '2024-07-07',48900000);
 insert into sorteos (id, n1,n2, n3,n4,n5,n6,comodin, fecha, monto) values (3922 ,  1,18,24,25,38,50,22, '2024-07-05',45500000);
 insert into sorteos (id, n1,n2, n3,n4,n5,n6,comodin, fecha, monto) values (3921 ,  11,36,39,41,53,54,16, '2024-07-03',41300000);
