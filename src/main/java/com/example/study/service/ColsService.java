@@ -18,4 +18,9 @@ public class ColsService {
         List<ColsDto> results = sorteoRepository.findByFecha(fecha);
         return results.isEmpty() ? Optional.empty() : Optional.of(results.get(0));
     }
+
+    public List<ColsDto> getRecordsBetweenDates(LocalDate startDate, LocalDate endDate) {
+        return sorteoRepository.findRecordsBetweenDates(startDate, endDate);
+    }
+
 }

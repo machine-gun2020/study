@@ -21,5 +21,10 @@ public interface SorteoRepository extends JpaRepository<Sorteo, Integer> {
     @Query("SELECT new com.example.study.dto.ColsDto(s.fecha, s.n1, s.n2, s.n3, s.n4, s.n5, s.n6) " +
             "FROM Sorteo s WHERE s.fecha = :fecha")
     List<ColsDto> findByFecha(@Param("fecha") LocalDate fecha);
+
+    @Query("SELECT new com.example.study.dto.ColsDto(s.fecha, s.n1, s.n2, s.n3, s.n4, s.n5, s.n6) " +
+            "FROM Sorteo s WHERE s.fecha BETWEEN :startDate AND :endDate order by fecha desc")
+    List<ColsDto> findRecordsBetweenDates(@Param("startDate") LocalDate startDate, @Param("endDate") LocalDate endDate);
+
 }
 

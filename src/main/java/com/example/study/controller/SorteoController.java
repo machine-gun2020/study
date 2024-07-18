@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/sorteos")
@@ -57,15 +58,40 @@ public class SorteoController {
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fecha) {
 
         if (fecha == null) {
-            return new ResponseEntity<>("Fecha parameter is required and must not be empty.", HttpStatus.BAD_REQUEST);
+            return ResponseEntity
+                    .badRequest()
+                    .body("Fecha parameter is required and must not be empty.");
         }
 
-        Optional<ColsDto> record = colsService.getRecordByDate(fecha);
-        if (record.isPresent()) {
-            return new ResponseEntity<>(record.get(), HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>("Record not found", HttpStatus.NOT_FOUND);
+        return colsService.getRecordByDate(fecha)
+                .map(record -> ResponseEntity.ok().body((Object) record))
+                .orElseGet(() -> ResponseEntity
+                        .status(HttpStatus.NOT_FOUND)
+                        .body((Object) "Record not found"));
+    }
+
+    @GetMapping("/getRecordsBetweenDates")
+    public ResponseEntity<?> getRecordsBetweenDates(
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate) {
+
+        if (startDate == null || endDate == null) {
+            return new ResponseEntity<>("Both 'startDate' and 'endDate' parameters are required and must not be empty.", HttpStatus.BAD_REQUEST);
         }
+
+        List<ColsDto> records = colsService.getRecordsBetweenDates(startDate, endDate);
+
+        if (records.isEmpty()) {
+            return new ResponseEntity<>("No records found between the given dates.", HttpStatus.NOT_FOUND);
+        }
+
+        String result = CombinatorialCondensationExample.calculate(records);
+
+        String formattedOutput = records.stream()
+                .map(ColsDto::toString)
+                .collect(Collectors.joining("\r\n"));
+
+        return new ResponseEntity<>(formattedOutput, HttpStatus.OK);
     }
 
 }
