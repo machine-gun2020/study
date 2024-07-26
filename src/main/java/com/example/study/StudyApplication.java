@@ -15,6 +15,7 @@ import java.util.function.*;
 
 import static com.example.study.CombinatorialCondensationExample.predictNextResult;
 
+
 @SpringBootApplication
 public class StudyApplication {
 
@@ -98,7 +99,7 @@ public class StudyApplication {
 				() -> System.out.println("myNumber has no value")
 		);
 
-		int[] numbers = {1, 3, 4, 5, 2, 7, 6, 5, 4, 3, 2};
+		int[] numbers = {1, 3, 4, 5, 2, 7, 6, 5, 4, 3, 2, 7, 7, 7};
 		Map<Integer, Integer> frequencyMap = new HashMap<>();
 
 		for (int number : numbers) {
@@ -218,5 +219,7 @@ public class StudyApplication {
 			System.out.println("Numerous " + ent2.getKey() + " appears " + ent2.getValue() + " times ");
 		}
 
+
 	}
+
 }
