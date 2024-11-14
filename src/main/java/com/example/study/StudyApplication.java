@@ -1,5 +1,6 @@
 package com.example.study;
 
+import ch.qos.logback.core.net.SyslogOutputStream;
 import com.example.study.dto.SorteoDtoN1;
 import com.example.study.model.Person;
 import com.example.study.model.Sorteo;
@@ -12,14 +13,21 @@ import org.springframework.context.ApplicationContext;
 
 import java.util.*;
 import java.util.function.*;
+import java.util.stream.Collectors;
 
 import static com.example.study.CombinatorialCondensationExample.predictNextResult;
 
 
 @SpringBootApplication
-public class StudyApplication {
+public class StudyApplication implements Pass{
+
+
+
+
 
 	public static void main(String[] args) {
+
+
 
 		ApplicationContext context = SpringApplication.run(StudyApplication.class, args);
 		List<String> secondList = Arrays.asList("Adrian","Marco", "Elsa");
@@ -79,7 +87,7 @@ public class StudyApplication {
 
 
 
-		Optional<String> name1 = Optional.ofNullable(paymentType.returnMayment());
+		Optional<String> name1 = Optional.ofNullable(paymentType.returnPayment());
 		name1.ifPresentOrElse(
 				name -> System.out.println("Person2's name is: " + name),
 				() -> System.out.println("Person2 has no name")
@@ -99,7 +107,7 @@ public class StudyApplication {
 				() -> System.out.println("myNumber has no value")
 		);
 
-		int[] numbers = {1, 3, 4, 5, 2, 7, 6, 5, 4, 3, 2, 7, 7, 7};
+		int[] numbers = {51, 3, 4, 5, 2, 7, 6, 5, 4, 3, 2, 7, 7, 7};
 		Map<Integer, Integer> frequencyMap = new HashMap<>();
 
 		for (int number : numbers) {
@@ -218,8 +226,25 @@ public class StudyApplication {
 		for(Map.Entry<Integer, Integer> ent2 : frecuencyN1.entrySet()){
 			System.out.println("Numerous " + ent2.getKey() + " appears " + ent2.getValue() + " times ");
 		}
-
-
+		int[][]  array = { {1,3,2,33} , {5,8,2,2}, {6,1,2,3} };
+		int secondHighest = findSecondHighest(array);
+		System.out.println("El segundo valor es " + secondHighest);
 	}
 
+	public static int findSecondHighest(int [][] array){
+		//convertir el arrego bidimensional en un stream, aplanar (flatmap) y ordenar
+		List <Integer>sortedDistinctValues = Arrays.stream(array)
+				.flatMapToInt(Arrays::stream)// convertir a stream de enteros
+				.distinct()// eliminar duplicados
+				.boxed()// convertir stream de integer (para usar en listas)
+				.sorted((a,b) -> b - a)// ordenar de forma ascendente
+				.collect(Collectors.toList()); // recoger los resultados en una lista
+		//Si la lista tiene al menos dos elementos, devolver el segundo mayor, de lo contrario, devolver el mayor
+		return(sortedDistinctValues.size() >= 2) ? sortedDistinctValues.get(1):sortedDistinctValues.get(0);
+	}
+
+	@Override
+	public int resultado() {
+		return 0;
+	}
 }

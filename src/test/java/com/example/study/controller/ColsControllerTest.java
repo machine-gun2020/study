@@ -20,7 +20,7 @@ import static org.mockito.Mockito.when;
 public class ColsControllerTest {
 
     @InjectMocks
-    private SorteoController colsController;
+    private ColController colController;
 
     @Mock
     private ColsService colsService;
@@ -44,7 +44,7 @@ public class ColsControllerTest {
 
         when(colsService.getRecordByDate(fecha)).thenReturn(Optional.empty());
 
-        ResponseEntity<Object> response = colsController.getRecordByDate(fecha);
+        ResponseEntity<Object> response = colController.getRecordByDate(fecha);
 
         assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
         assertEquals("Record not found", response.getBody());
@@ -56,5 +56,8 @@ public class ColsControllerTest {
 
         assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
         assertEquals("Fecha parameter is required and must not be empty.", response.getBody());
+    }
+
+    private class ColController {
     }
 }

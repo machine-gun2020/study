@@ -1,11 +1,13 @@
 package com.example.study.model;
 
+//import jakarta.persistence.*;
+
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "sorteos")
+@Table(name = "sorteo")
 public class Sorteo {
 
     @Id

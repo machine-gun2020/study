@@ -13,7 +13,7 @@ public class PaymentType implements payment{
     }
 
     @Override
-    public String returnMayment() {
+    public String returnPayment() {
         return "Saul";
     }
 }
