@@ -1,12 +1,9 @@
 package com.example.study;
 
-import ch.qos.logback.core.net.SyslogOutputStream;
 import com.example.study.dto.SorteoDtoN1;
 import com.example.study.model.Person;
 import com.example.study.model.Sorteo;
 import com.example.study.repository.SorteoRepository;
-import com.example.study.service.SorteoService;
-import com.example.study.controller.SorteoController;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -15,11 +12,9 @@ import java.util.*;
 import java.util.function.*;
 import java.util.stream.Collectors;
 
-import static com.example.study.CombinatorialCondensationExample.predictNextResult;
-
 
 @SpringBootApplication
-public class StudyApplication implements Pass{
+public class StudyApplication {
 
 
 
@@ -190,7 +185,6 @@ public class StudyApplication implements Pass{
 		for (int num : historicalNumbers) {
 			frequencyMapX.put(num, frequencyMapX.getOrDefault(num, 0) + 1);
 		}
-
 		List<Integer> frequentNumbers = new ArrayList<>();
 		for (Map.Entry<Integer, Integer> entry : frequencyMapX.entrySet()) {
 			if (entry.getValue() >= 2) {
@@ -198,7 +192,6 @@ public class StudyApplication implements Pass{
 			}
 		}
 		System.out.println("Frequent Numbers: " + frequentNumbers);
-
 		SorteoRepository sorteoRepository = context.getBean(SorteoRepository.class);
 
 		// Llama al método findAll() para obtener todos los registros y llenar el List<Sorteo>
@@ -222,7 +215,6 @@ public class StudyApplication implements Pass{
 				frecuencyN1.put(Integer.parseInt(String.valueOf(sorteoDtoN1)), 1);
 			}
 		}
-
 		for(Map.Entry<Integer, Integer> ent2 : frecuencyN1.entrySet()){
 			System.out.println("Numerous " + ent2.getKey() + " appears " + ent2.getValue() + " times ");
 		}
@@ -243,8 +235,4 @@ public class StudyApplication implements Pass{
 		return(sortedDistinctValues.size() >= 2) ? sortedDistinctValues.get(1):sortedDistinctValues.get(0);
 	}
 
-	@Override
-	public int resultado() {
-		return 0;
-	}
 }
