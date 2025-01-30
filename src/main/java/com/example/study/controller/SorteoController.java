@@ -1,5 +1,6 @@
 package com.example.study.controller;
 
+import ch.qos.logback.core.net.SyslogOutputStream;
 import com.example.study.CombinatorialCondensationExample;
 import com.example.study.dto.ColsDto;
 import com.example.study.dto.SorteoDtoN1;
@@ -34,6 +35,7 @@ public class SorteoController {
     public SorteoController(SorteoService sorteoService) {
         this.sorteoService = sorteoService;
     }
+
 
     @GetMapping
     public List<Sorteo> getAllSorteos() {

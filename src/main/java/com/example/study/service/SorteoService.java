@@ -1,11 +1,10 @@
 package com.example.study.service;
 
+import com.example.study.dto.AllCols;
 import com.example.study.dto.ColsDto;
 import com.example.study.dto.SorteoDtoN1;
-import com.example.study.model.Sorteo;
 import com.example.study.repository.SorteoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -24,9 +23,9 @@ public class SorteoService {
 
     }
 
-    public List<Sorteo> getAllSorteos() {
-
-        return sorteoRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
+    public List<AllCols> getAllSorteos() {
+        List<AllCols> allsorteos = sorteoRepository.findAll();
+        return allsorteos;
 
     }
 

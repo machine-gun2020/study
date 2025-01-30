@@ -38,7 +38,7 @@ public class CombinatorialCondensationExample {
             }
             result[i] = sum / sorteos.size();
         }
-        System.out.println(Arrays.toString(result));
+        System.out.println("XXXX" + Arrays.toString(result));
         return result;
     }
 
